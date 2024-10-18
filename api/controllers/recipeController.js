@@ -90,7 +90,7 @@ export const deleteRecipe = (req, res) => {
     // res.status(204).json({})
     //!üstteki splice methoduyla aynı ama ben kendim filterle denemek istedim
     // foundRecipe middlewaredeki controllerid dosyasından geldi
-    const filtred = data.filter((i) => i.id !== req.foundRecipe.id)
+    const filtred = data.filter((i) => i.id !== req.params.id)
     writeRecipes(filtred)
     res.status(204).json({})
 

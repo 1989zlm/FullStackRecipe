@@ -5,7 +5,7 @@ const Sidebar = () => {
   return (
     <aside className="flex flex-col h-screen justify-between items-center md:px-3 py-3 max-md:gap-20 max-md:justify-normal">
       <img
-        src="r_logo.jpg"
+        src="/r_logo.jpg"
         alt="logo"
         className="max-w-[80px] md:max-w-[150px]"
       />

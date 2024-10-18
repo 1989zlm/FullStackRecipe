@@ -6,6 +6,8 @@ import Search from "../component/Search";
 import Sort from "../component/Sort";
 import { useState } from "react";
 import { useDebounce } from "@uidotdev/usehooks";
+import Loader from "../component/Loader";
+import Error from "../component/Error";
 
 const Home = () => {
   //aratılan kelimenin state
@@ -23,7 +25,7 @@ const Home = () => {
 
   //console.log("search:", searchTerm, "debounced:", debouncedTerm);
   //apiden tarif verilerini alalım
-  const { isLoading, error, data } = useQuery({
+  const { isLoading, error, data, refetch } = useQuery({
     //verinin ismi (order ve searchTerm herdeğiştiğinde querykey ile api isteği at ama biraz bekleyince istek at herk harf için arama yapma demek için searchtermi kaldırıp yerine deboucedterm yazdık)
     queryKey: ["recipes", order, debouncedTerm],
     //queryfonk.da apiye get isteği at, cevap gelirse buradaki recipe verisine eriş
@@ -40,9 +42,9 @@ const Home = () => {
       <Search setSearchTerm={setSearchTerm} />
       <section>
         {isLoading ? (
-          "Loader"
+          <Loader />
         ) : error ? (
-          "error"
+          <Error info={error.message} refetch={refetch} />
         ) : (
           <>
             <div className="flex justify-between items-center">
