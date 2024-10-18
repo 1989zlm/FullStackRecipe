@@ -1,6 +1,6 @@
 # theScreenGif
 
-![screengif](src/assets/screen.gif)
+![screengif](client/src/assets/screen.gif)
 
 # Backend
 
